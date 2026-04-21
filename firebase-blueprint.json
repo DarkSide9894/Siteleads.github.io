@@ -1,0 +1,33 @@
+{
+  "entities": {
+    "BusinessLead": {
+      "title": "Business Lead",
+      "description": "A business lead found in Los Angeles without a website.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": "string" },
+        "phone": { "type": "string" },
+        "category": { "type": "string" },
+        "websiteFound": { "type": "boolean" },
+        "emailAddress": { "type": "string" },
+        "userId": { "type": "string" },
+        "generatedProposal": { "type": "string" },
+        "status": { 
+          "type": "string",
+          "enum": ["discovered", "proposal_generated", "contacted", "ignored"]
+        },
+        "searchQuery": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "address", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "BusinessLead",
+      "description": "Collection of business leads for outreach."
+    }
+  }
+}
